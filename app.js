@@ -1,4 +1,4 @@
-﻿
+
 import * as THREE from './libs/three/three.module.js';
 import { GLTFLoader } from './libs/three/jsm/GLTFLoader.js';
 import { DRACOLoader } from './libs/three/jsm/DRACOLoader.js';
@@ -18,8 +18,8 @@ class App{
 		this.assetsPath = './assets/';
         
 		this.camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.01, 500 );
-        this.camera.position.set(0, 1.6, 0);
-
+		this.camera.position.set( 0, 1.6, 0 );
+        
         this.dolly = new THREE.Object3D(  );
         this.dolly.position.set(0, 0, 10);
         this.dolly.add( this.camera );
@@ -29,9 +29,8 @@ class App{
 		this.scene = new THREE.Scene();
         this.scene.add( this.dolly );
         
-        const sunsetLight = new THREE.DirectionalLight(0xffaa66, 1.0);
-        sunsetLight.position.set(-10, 5, -10);
-        this.scene.add(sunsetLight);
+		const ambient = new THREE.HemisphereLight(0xFFFFFF, 0xAAAAAA, 0.8);
+		this.scene.add(ambient);
 
 		this.renderer = new THREE.WebGLRenderer({ antialias: true });
 		this.renderer.setPixelRatio( window.devicePixelRatio );
