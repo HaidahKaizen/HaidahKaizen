@@ -22,6 +22,17 @@ class App{
 
         this.listener = new THREE.AudioListener();
         this.camera.add(this.listener);
+
+        // Ambient sound
+        const audioLoader = new THREE.AudioLoader();
+        this.backgroundSound = new THREE.Audio(this.listener);
+
+        audioLoader.load('./assets/audio/ambience.mp3', (buffer) => {
+            this.backgroundSound.setBuffer(buffer);
+            this.backgroundSound.setLoop(true);
+            this.backgroundSound.setVolume(0.5);
+            this.backgroundSound.play();
+        });
         
         this.dolly = new THREE.Object3D(  );
         this.dolly.position.set(0, 0, 10);
