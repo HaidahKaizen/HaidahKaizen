@@ -30,6 +30,12 @@ class App{
         this.scene.add( this.dolly );
         
         const ambient = new THREE.HemisphereLight(0xff8c42, 0x330000, 0.6);
+        sunsetLight.position.set(-10, 5, -10);
+        this.scene.add(sunsetLight);
+
+        sunsetLight.castShadow = true;
+        this.renderer.shadowMap.enabled = true;
+        this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
        
 		this.scene.add(ambient);
 
