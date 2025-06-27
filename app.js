@@ -160,6 +160,11 @@ class App{
         this.renderer.xr.enabled = true;
 
         const btn = VRButton(this.renderer);
+
+        btn.style.backgroundColor = '#FF69B4';
+        btn.style.color = '#fff';
+        btn.style.borderRadius = '6px';
+        btn.style.padding = '0.4em 0.8em';
         
         const self = this;
         
