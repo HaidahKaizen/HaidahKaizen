@@ -20,50 +20,6 @@ class App{
 		this.camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.01, 500 );
         this.camera.position.set(0, 1.6, 0);
 
-        this.listener = new THREE.AudioListener();               // Å© Added
-        this.camera.add(this.listener);                          // Å© Added
-
-        // ÑüÑüÑü Ambient (Non-Positional) Background Sound ÑüÑüÑü
-        const audioLoader = new THREE.AudioLoader();             // Å© Added
-        this.backgroundSound = new THREE.Audio(this.listener);   // Å© Added
-        audioLoader.load(
-            `${this.assetsPath}audio/College ambience.mp3`,                // Å© Ensure file here
-            (buffer) => {
-                this.backgroundSound.setBuffer(buffer);
-                this.backgroundSound.setLoop(true);
-                this.backgroundSound.setVolume(10);
-                // DonÅft auto-play until user gesture if you hit autoplay-block:
-                this.backgroundSound.play();                         // Å© Added
-            },
-            undefined,
-            (err) => console.error('Audio load error:', err)
-        );                                                       // Å© Added
-        setupXR(); {
-            this.renderer.xr.enabled = true;
-            const btn = new VRButton(this.renderer);
-
-            // resume and play on VR enter
-            btn.addEventListener('click', () => {
-                this.listener.context.resume().play(() => {
-                    if (this.backgroundSound.buffer && !this.backgroundSound.isPlaying) {
-                        this.backgroundSound.play();
-                    }
-                });
-            });
-
-            // fallback for non-VR testing
-            window.addEventListener('click', () => {
-                this.listener.context.resume().play(() => {
-                    if (this.backgroundSound.buffer && !this.backgroundSound.isPlaying) {
-                        this.backgroundSound.play();
-                    }
-                });
-            }, { once: true });
-
-            // Åcthe rest of your XR setupÅc
-        }
-
-
         
         this.dolly = new THREE.Object3D(  );
         this.dolly.position.set(0, 0, 10);
