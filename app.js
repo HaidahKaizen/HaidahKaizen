@@ -162,9 +162,6 @@ class App{
 
         const btn = VRButton(this.renderer);
 
-        // override green here:
-        btn.style.backgroundColor = '#FF69B4';  // pink!
-        btn.style.color = '#fff';
         
         const self = this;
         
