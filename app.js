@@ -53,7 +53,7 @@ class App{
 
             // fallback for non-VR testing
             window.addEventListener('click', () => {
-                this.listener.context.resume().then(() => {
+                this.listener.context.resume().play(() => {
                     if (this.backgroundSound.buffer && !this.backgroundSound.isPlaying) {
                         this.backgroundSound.play();
                     }
