@@ -159,7 +159,7 @@ class App{
     setupXR(){
         this.renderer.xr.enabled = true;
 
-        const btn = new VRButton(this.renderer);
+        const btn = VRButton(this.renderer);
         
         const self = this;
         
