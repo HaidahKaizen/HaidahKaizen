@@ -31,7 +31,7 @@ class App{
             (buffer) => {
                 this.backgroundSound.setBuffer(buffer);
                 this.backgroundSound.setLoop(true);
-                this.backgroundSound.setVolume(0.5);
+                this.backgroundSound.setVolume(10);
                 // DonÅft auto-play until user gesture if you hit autoplay-block:
                 this.backgroundSound.play();                         // Å© Added
             },
