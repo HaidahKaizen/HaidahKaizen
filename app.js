@@ -44,7 +44,7 @@ class App{
 
             // resume and play on VR enter
             btn.addEventListener('click', () => {
-                this.listener.context.resume().then(() => {
+                this.listener.context.resume().play(() => {
                     if (this.backgroundSound.buffer && !this.backgroundSound.isPlaying) {
                         this.backgroundSound.play();
                     }
