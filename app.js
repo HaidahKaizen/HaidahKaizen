@@ -20,20 +20,26 @@ class App{
 		this.camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.01, 500 );
         this.camera.position.set(0, 1.6, 0);
 
-        this.listener = new THREE.AudioListener();
-        this.camera.add(this.listener);
+        this.listener = new THREE.AudioListener();               // © Added
+        this.camera.add(this.listener);                          // © Added
 
-        // Ambient sound
-        const audioLoader = new THREE.AudioLoader();
-        this.backgroundSound = new THREE.Audio(this.listener);
+        // „Ÿ„Ÿ„Ÿ Ambient (Non-Positional) Background Sound „Ÿ„Ÿ„Ÿ
+        const audioLoader = new THREE.AudioLoader();             // © Added
+        this.backgroundSound = new THREE.Audio(this.listener);   // © Added
+        audioLoader.load(
+            `${this.assetsPath}audio/College ambience.mp3`,                // © Ensure file here
+            (buffer) => {
+                this.backgroundSound.setBuffer(buffer);
+                this.backgroundSound.setLoop(true);
+                this.backgroundSound.setVolume(0.5);
+                // Donft auto-play until user gesture if you hit autoplay-block:
+                this.backgroundSound.play();                         // © Added
+            },
+            undefined,
+            (err) => console.error('Audio load error:', err)
+        );                                                       // © Added
 
-        audioLoader.load('./assets/audio/College ambience.mp3', (buffer) => {
-  
-            this.backgroundSound.setBuffer(buffer);
-            this.backgroundSound.setLoop(true);
-            this.backgroundSound.setVolume(1);
-            this.backgroundSound.play();
-        });
+
         
         this.dolly = new THREE.Object3D(  );
         this.dolly.position.set(0, 0, 10);
