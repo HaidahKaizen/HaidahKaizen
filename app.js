@@ -32,11 +32,36 @@ class App{
                 this.backgroundSound.setBuffer(buffer);
                 this.backgroundSound.setLoop(true);
                 this.backgroundSound.setVolume(10);
-               
+                // DonÅft auto-play until user gesture if you hit autoplay-block:
+                this.backgroundSound.play();                         // Å© Added
             },
             undefined,
             (err) => console.error('Audio load error:', err)
         );                                                       // Å© Added
+        setupXR(); {
+            this.renderer.xr.enabled = true;
+            const btn = new VRButton(this.renderer);
+
+            // resume and play on VR enter
+            btn.addEventListener('click', () => {
+                this.listener.context.resume().then(() => {
+                    if (this.backgroundSound.buffer && !this.backgroundSound.isPlaying) {
+                        this.backgroundSound.play();
+                    }
+                });
+            });
+
+            // fallback for non-VR testing
+            window.addEventListener('click', () => {
+                this.listener.context.resume().then(() => {
+                    if (this.backgroundSound.buffer && !this.backgroundSound.isPlaying) {
+                        this.backgroundSound.play();
+                    }
+                });
+            }, { once: true });
+
+            // Åcthe rest of your XR setupÅc
+        }
 
 
         
