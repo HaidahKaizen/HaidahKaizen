@@ -28,9 +28,10 @@ class App{
         this.backgroundSound = new THREE.Audio(this.listener);
 
         audioLoader.load('./assets/audio/College ambience.mp3', (buffer) => {
+  
             this.backgroundSound.setBuffer(buffer);
             this.backgroundSound.setLoop(true);
-            this.backgroundSound.setVolume(0.10);
+            this.backgroundSound.setVolume(1);
             this.backgroundSound.play();
         });
         
