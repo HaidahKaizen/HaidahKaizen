@@ -20,6 +20,7 @@ class App{
 		this.camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 0.01, 500 );
         this.camera.position.set(0, 1.6, 0);
 
+
         
         this.dolly = new THREE.Object3D(  );
         this.dolly.position.set(0, 0, 10);
@@ -161,10 +162,9 @@ class App{
 
         const btn = VRButton(this.renderer);
 
-        btn.style.backgroundColor = '#FF69B4';
+        // override green here:
+        btn.style.backgroundColor = '#FF69B4';  // pink!
         btn.style.color = '#fff';
-        btn.style.borderRadius = '6px';
-        btn.style.padding = '0.4em 0.8em';
         
         const self = this;
         
