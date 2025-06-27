@@ -31,7 +31,7 @@ class App{
             console.log('Audio loaded');
             this.backgroundSound.setBuffer(buffer);
             this.backgroundSound.setLoop(true);
-            this.backgroundSound.setVolume(0.5+);
+            this.backgroundSound.setVolume(0.10);
             this.backgroundSound.play();
         });
         
