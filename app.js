@@ -1,4 +1,4 @@
-
+﻿
 import * as THREE from './libs/three/three.module.js';
 import { GLTFLoader } from './libs/three/jsm/GLTFLoader.js';
 import { DRACOLoader } from './libs/three/jsm/DRACOLoader.js';
@@ -159,7 +159,16 @@ class App{
     setupXR(){
         this.renderer.xr.enabled = true;
 
-        const btn = new VRButton( this.renderer );
+        const btn = new VRButton(this.renderer);
+
+        // ② right here—style it:
+        btn.style.backgroundColor = '#ff4400';
+        btn.style.color = '#fff';
+        btn.style.borderRadius = '6px';
+        btn.style.padding = '0.4em 0.8em';
+
+        // …rest of your XR setup…
+    
         
         const self = this;
         
