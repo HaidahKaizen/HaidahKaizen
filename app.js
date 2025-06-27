@@ -32,8 +32,7 @@ class App{
                 this.backgroundSound.setBuffer(buffer);
                 this.backgroundSound.setLoop(true);
                 this.backgroundSound.setVolume(10);
-                // Donft auto-play until user gesture if you hit autoplay-block:
-                this.backgroundSound.play();                         // © Added
+               
             },
             undefined,
             (err) => console.error('Audio load error:', err)
