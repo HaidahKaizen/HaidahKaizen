@@ -29,7 +29,14 @@ class App{
 		this.scene = new THREE.Scene();
         this.scene.add( this.dolly );
         
-		const ambient = new THREE.HemisphereLight(0xFFFFFF, 0xAAAAAA, 0.8);
+        const ambient = new THREE.HemisphereLight(0xff8c42, 0x330000, 0.6);
+        const sunsetLight = new THREE.DirectionalLight(0xffaa66, 1.0);
+        sunsetLight.position.set(-10, 5, -10);
+        this.scene.add(sunsetLight);
+        sunsetLight.castShadow = true;
+        this.renderer.shadowMap.enabled = true;
+        this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
 		this.scene.add(ambient);
 
 		this.renderer = new THREE.WebGLRenderer({ antialias: true });
